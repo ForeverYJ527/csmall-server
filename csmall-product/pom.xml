@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父级项目 -->
+    <parent>
+        <groupId>cn.tedu</groupId>
+        <artifactId>csmall-server</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <!-- 当前项目的信息 -->
+    <groupId>cn.tedu</groupId>
+    <artifactId>csmall-product</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <!-- 聚合项目中的父级Project或父级Module都应该做以下配置 -->
+    <packaging>pom</packaging>
+
+    <!-- 当前Project的各子级Module -->
+    <modules>
+        <module>csmall-product-webapi</module>
+        <module>csmall-product-service</module>
+    </modules>
+
+</project>

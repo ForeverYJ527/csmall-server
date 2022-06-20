@@ -1,0 +1,1 @@
+truncate pms_category;

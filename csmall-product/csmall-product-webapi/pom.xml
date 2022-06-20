@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父级项目 -->
+    <parent>
+        <groupId>cn.tedu</groupId>
+        <artifactId>csmall-product</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <!-- 当前项目的信息 -->
+    <groupId>cn.tedu</groupId>
+    <artifactId>csmall-product-webapi</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <!-- 当前项目需要使用的依赖项 -->
+    <dependencies>
+        <!-- Csmall Common -->
+        <dependency>
+            <groupId>cn.tedu</groupId>
+            <artifactId>csmall-common</artifactId>
+        </dependency>
+        <!-- Csmall Product Service -->
+        <dependency>
+            <groupId>cn.tedu</groupId>
+            <artifactId>csmall-product-service</artifactId>
+        </dependency>
+        <!-- Csmall POJO -->
+        <dependency>
+            <groupId>cn.tedu</groupId>
+            <artifactId>csmall-pojo</artifactId>
+        </dependency>
+        <!-- Knife4j：在线API文档 -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- Spring Boot Validation：验证请求参数的基本格式 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <!-- Spring Boot Web：支持Spring MVC -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Spring Boot Redis：支持对Redis编程 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- Mybatis Spring Boot：Mybatis及对Spring Boot的支持 -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- Druid数据库连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+        <!-- Spring Boot Test：测试 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

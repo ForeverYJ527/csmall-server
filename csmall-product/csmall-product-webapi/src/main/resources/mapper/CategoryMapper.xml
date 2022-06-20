@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.csmall.product.webapi.mapper.CategoryMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into pms_category(name, parent_id, depth, keywords, sort,
+                                 icon, enable, is_parent, is_display, gmt_create,
+                                 gmt_modified)
+        values (#{name}, #{parentId}, #{depth}, #{keywords}, #{sort},
+                #{icon}, #{enable}, #{isParent}, #{isDisplay}, #{gmtCreate},
+                #{gmtModified})
+    </insert>
+
+    <select id="getByName" resultMap="SimpleResultMap">
+        select id
+        from pms_category
+        where name = #{name}
+    </select>
+
+    <select id="getById" resultMap="SimpleResultMap">
+        select id,
+               depth,
+               is_parent,
+               parent_id
+        from pms_category
+        where id = #{id}
+    </select>
+
+    <sql id="SimpleQueryFields">
+        <if test="true">
+            id,depth,is_parent
+        </if>
+    </sql>
+
+    <resultMap id="SimpleResultMap" type="cn.tedu.csmall.pojo.vo.CategorySimpleVO">
+        <id column="id" property="id"/>
+        <result column="depth" property="depth"/>
+        <result column="is_parent" property="isParent"/>
+        <result column="parent_id" property="parentId"/>
+    </resultMap>
+
+    <update id="updateIsParentById">
+        update pms_category
+        set is_parent=#{isParent}
+        where id = #{id}
+    </update>
+
+    <select id="listByParentId" resultMap="SimpleListResultMap">
+        select
+        <include refid="SimpleListQueryFields"/>
+        from pms_category
+        where parent_id=#{id} and enable=1 and is_display=1
+        order by sort desc,gmt_modified desc
+    </select>
+
+    <sql id="SimpleListQueryFields">
+        <if test="true">
+            id, name, sort, icon, is_parent
+        </if>
+    </sql>
+
+    <resultMap id="SimpleListResultMap" type="cn.tedu.csmall.pojo.vo.CategorySimpleListItemVO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="sort" property="sort"/>
+        <result column="icon" property="icon"/>
+        <result column="is_parent" property="isParent"/>
+    </resultMap>
+
+    <select id="getDetailsById" resultMap="DetailsResultMap">
+        select
+        <include refid="DetailsQueryFields"/>
+        from pms_category
+        where id=#{id}
+    </select>
+
+    <select id="list" resultMap="DetailsResultMap">
+        select
+        <include refid="DetailsQueryFields"/>
+        from pms_category
+        where enable=1 and is_display=1
+        order by sort desc,gmt_modified desc
+    </select>
+
+    <sql id="DetailsQueryFields">
+        <if test="true">
+            id, name, parent_id, depth, keywords,
+            sort, icon, enable, is_parent, is_display
+        </if>
+    </sql>
+
+    <resultMap id="DetailsResultMap" type="cn.tedu.csmall.pojo.vo.CategoryDetailsVO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="depth" property="depth"/>
+        <result column="keywords" property="keywords"/>
+        <result column="sort" property="sort"/>
+        <result column="icon" property="icon"/>
+        <result column="enable" property="enable"/>
+        <result column="is_parent" property="isParent"/>
+        <result column="is_display" property="isDisplay"/>
+    </resultMap>
+
+    <!--6.26作业-->
+    <update id="disableById">
+        update pms_category
+        set enable=0
+        where id = #{id}
+    </update>
+
+    <update id="enableById">
+        update pms_category
+        set enable=1
+        where id = #{id}
+    </update>
+
+    <update id="notDisplayById">
+        update pms_category
+        set is_display=0
+        where id = #{id}
+    </update>
+
+    <update id="isDisplayById">
+        update pms_category
+        set is_display=1
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        delete
+        from pms_category
+        where id = #{id}
+    </delete>
+
+    <update id="updateById">
+        update pms_category
+        set name=#{name},
+            keywords=#{keywords},
+            icon=#{icon},
+            sort=#{sort}
+        where id = #{id}
+    </update>
+
+</mapper>

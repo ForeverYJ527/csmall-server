@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父级项目 -->
+    <parent>
+        <groupId>cn.tedu</groupId>
+        <artifactId>csmall-product</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <!-- 当前项目的信息 -->
+    <groupId>cn.tedu</groupId>
+    <artifactId>csmall-product-service</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <!-- 当前项目需要使用的依赖项 -->
+    <dependencies>
+        <!-- Csmall POJO -->
+        <dependency>
+            <groupId>cn.tedu</groupId>
+            <artifactId>csmall-pojo</artifactId>
+        </dependency>
+        <!-- Mybatis Spring Boot：Mybatis及对Spring Boot的支持 -->
+        <!-- 仅需要保留spring-jdbc，使得业务接口可以使用@Transactional注解 -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mybatis.spring.boot</groupId>
+                    <artifactId>mybatis-spring-boot-autoconfigure</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mybatis</groupId>
+                    <artifactId>mybatis</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mybatis</groupId>
+                    <artifactId>mybatis-spring</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.zaxxer</groupId>
+                    <artifactId>HikariCP</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+</project>
